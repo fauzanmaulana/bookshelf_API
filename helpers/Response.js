@@ -35,6 +35,7 @@ class Response {
     }
 
     bookNotFound(id) {
+        this.isValidate = true
         const book = books.filter((book) => book.id === id)[0]
         if (!book) {
             this.isValidate = false

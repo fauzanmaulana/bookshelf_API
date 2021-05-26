@@ -27,7 +27,8 @@ const showBookHandler = (request, h) => {
     const response = new Response(null, null, null, bookId)
 
     if (!response.isValidate) {
-        const {status, message, code} = response.response
+        const {status, code} = response.response
+        const message = 'Buku tidak ditemukan'
         result = h.response({status, message})
         result.code(code)
         return result
@@ -44,7 +45,6 @@ const addBookHandler = (request, h) => {
     const {name, year, author, summary, publisher, pageCount, readPage, reading} = request.payload
 
     const response = new Response(name, pageCount, readPage)
-    console.log(name, pageCount, readPage)
 
     if (!response.isValidate) {
         const {status, message, code} = response.response
@@ -65,7 +65,7 @@ const addBookHandler = (request, h) => {
     books.push(book)
 
     result = h.response(response.customResponse('Buku berhasil ditambahkan', {bookId: book.id}))
-    result.code(200)
+    result.code(201)
     return result
 }
 
