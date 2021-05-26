@@ -5,7 +5,7 @@ class Response {
     constructor(name=null, pageCount=null, readPage=null, bookId=null) {
         this.isValidate = true
         this.response = null
-        if (!name && !pageCount && !readPage && !bookId) {
+        if (!name) {
             this.nullName()
         }
         if (readPage > pageCount) {

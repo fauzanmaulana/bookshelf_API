@@ -44,6 +44,7 @@ const addBookHandler = (request, h) => {
     const {name, year, author, summary, publisher, pageCount, readPage, reading} = request.payload
 
     const response = new Response(name, pageCount, readPage)
+    console.log(name, pageCount, readPage)
 
     if (!response.isValidate) {
         const {status, message, code} = response.response
