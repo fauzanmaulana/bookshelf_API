@@ -27,8 +27,7 @@ const showBookHandler = (request, h) => {
     const response = new Response(null, null, null, bookId)
 
     if (!response.isValidate) {
-        const {status, code} = response.response
-        const message = 'Buku tidak ditemukan'
+        const {status, message, code} = response.response
         result = h.response({status, message})
         result.code(code)
         return result
@@ -102,7 +101,8 @@ const deleteBookHandler = (request, h) => {
     const response = new Response(null, null, null, bookId)
 
     if (!response.isValidate) {
-        const {status, message, code} = response.response
+        const {status, code} = response.response
+        const message = 'Buku gagal dihapus. Id tidak ditemukan'
         result = h.response({status, message})
         result.code(code)
         return result
